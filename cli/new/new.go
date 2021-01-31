@@ -226,16 +226,19 @@ func Run(ctx *cli.Context) error {
 	switch atype {
 	case "srv":
 	case "service":
-		c.Files = append(c.Files, []file{}...)
+		c.Files = append(c.Files, []file{
+			{"main.go", tmpl.MainSRV},
+			{"subscriber/" + alias + ".go", tmpl.SubscriberSRV},
+		}...)
 	case "api":
-		c.Files = append(c.Files, []file{}...)
+		c.Files = append(c.Files, []file{
+			{"main.go", tmpl.MainAPI},
+		}...)
 	default:
 	}
 
 	c.Files = append(c.Files, []file{
-		{"main.go", tmpl.MainSRV},
 		{"handler/" + alias + ".go", tmpl.HandlerSRV},
-		{"subscriber/" + alias + ".go", tmpl.SubscriberSRV},
 		{"proto/" + alias + "/" + alias + ".proto", tmpl.ProtoSRV},
 		{"plugin.go", tmpl.Plugin},
 		{"generate.go", tmpl.GenerateFile},

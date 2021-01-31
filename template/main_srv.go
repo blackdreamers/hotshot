@@ -14,6 +14,12 @@ func main() {
 	// DB repositories
 	coredb.Repositories()
 
+	// Init server
+	server.Init(
+		server.Name({{lower .Alias}}),
+		server.Type(server.SRV),
+	)
+
 	// Register handles
 	server.Handles(
 		new(handler.{{title .Alias}}),
