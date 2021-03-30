@@ -240,7 +240,6 @@ func Run(ctx *cli.Context) error {
 	c.Files = append(c.Files, []file{
 		{"handler/" + alias + ".go", tmpl.HandlerSRV},
 		{"proto/" + alias + "/" + alias + ".proto", tmpl.ProtoSRV},
-		{"plugin.go", tmpl.Plugin},
 		{"generate.go", tmpl.GenerateFile},
 		{"Dockerfile", tmpl.DockerSRV},
 		{"Makefile", tmpl.Makefile},
